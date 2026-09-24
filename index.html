@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>元益家庭水電工程</title>
+  
+  <!-- 引入 FontAwesome 免費圖示庫 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <style>
     /* 全域設定 */
     :root {
@@ -23,8 +27,11 @@
       position: sticky; top: 0; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; z-index: 1000;
     }
-    .logo { display: flex; align-items: center; }
+    .logo { display: flex; align-items: center; gap: 12px; }
     .logo img { height: 55px; width: auto; object-fit: contain; }
+    .logo-text { font-size: 22px; font-weight: 800; color: var(--primary-blue); letter-spacing: 1px; }
+    
+    .nav-links { display: flex; align-items: center; }
     .nav-links a { margin: 0 15px; color: var(--text-dark); font-weight: bold; }
     .nav-links a:hover { color: var(--primary-blue); }
     
@@ -48,11 +55,26 @@
     .section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
     .section h2 { font-size: 2.2rem; color: var(--primary-blue); margin-bottom: 40px; }
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-    .service-card { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-blue); }
-    .service-card h3 { font-size: 1.4rem; margin-bottom: 15px; }
+    .service-card { background: #fff; padding: 40px 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-blue); transition: 0.3s; }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+    .service-icon { font-size: 45px; color: var(--action-orange); margin-bottom: 20px; }
+    .service-card h3 { font-size: 1.4rem; margin-bottom: 15px; color: var(--primary-blue); }
 
-    /* 聯絡我們 (表單面板) */
+    /* 聯絡我們 (表單面板與名片) */
     .contact-section { background: var(--secondary-blue); padding: 80px 5%; }
+    
+    /* 名片式設計 */
+    .business-card {
+      max-width: 600px; margin: 0 auto 30px; background: #fff; padding: 25px 30px; 
+      border-radius: 8px; border-left: 6px solid var(--action-orange);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05); text-align: left;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .business-card h3 { font-size: 1.6rem; color: var(--primary-blue); margin-bottom: 5px; border-bottom: 1px solid #eee; padding-bottom: 10px;}
+    .business-card p { font-size: 1.1rem; font-weight: bold; display: flex; align-items: center; gap: 10px; margin: 5px 0;}
+    .business-card i { color: var(--primary-blue); width: 20px; text-align: center; }
+    .business-card a { color: var(--action-orange); font-size: 1.3rem; }
+    
     .form-container { max-width: 600px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
     .form-group { margin-bottom: 20px; text-align: left; }
     .form-group label { display: block; margin-bottom: 8px; font-weight: bold; }
@@ -66,6 +88,7 @@
     /* 手機版適配 */
     @media (max-width: 768px) {
       .nav-links { display: none; }
+      .logo-text { font-size: 18px; }
       .hero h1 { font-size: 2rem; }
       .hero .btn { display: block; margin: 15px auto; width: 80%; max-width: 300px; }
     }
@@ -76,8 +99,8 @@
   <!-- 導覽列 -->
   <header>
     <a href="#" class="logo">
-      <img src="Yuan Yi.png" alt="元益家庭水電工程">
-      <p>元益水電工程</p>
+      <img src="Yuan Yi.png" alt="元益水電工程">
+      <span class="logo-text">元益水電工程</span>
     </a>
     <nav class="nav-links">
       <a href="#services">服務項目</a>
@@ -92,7 +115,7 @@
     <p>價格透明・完善保固，大台北地區快速到府服務</p>
     <div>
       <a href="#contact" class="btn btn-primary">線上填表諮詢</a>
-      <a href="tel:0900000000" class="btn btn-outline" style="color: #fff; border-color: #fff;">撥打服務專線</a>
+      <a href="tel:0928830555" class="btn btn-outline" style="color: #fff; border-color: #fff;">撥打服務專線</a>
     </div>
   </section>
 
@@ -101,25 +124,37 @@
     <h2>我們的服務項目</h2>
     <div class="services-grid">
       <div class="service-card">
+        <i class="fas fa-hammer service-icon"></i>
         <h3>居家維修</h3>
         <p>抓漏防水、馬桶/水管包通、燈具與衛浴設備更換。</p>
       </div>
       <div class="service-card">
+        <i class="fas fa-home service-icon"></i>
         <h3>老屋翻新</h3>
         <p>全室電線重拉、冷熱水管更新、無熔絲開關更換，確保用電安全。</p>
       </div>
       <div class="service-card">
+        <i class="fas fa-building service-icon"></i>
         <h3>廠辦工程</h3>
         <p>辦公室配電、店面裝潢水電配置、網路與電話線路佈建。</p>
       </div>
     </div>
   </section>
 
-  <!-- 聯絡表單 -->
+  <!-- 聯絡表單與名片 -->
   <section id="contact" class="contact-section text-center">
     <div class="section">
       <h2>聯絡我們</h2>
-      <p style="margin-bottom: 30px;">填寫下方表單，我們的專業技師將盡快與您聯繫初步評估與報價。</p>
+      
+      <!-- 名片式聯繫方式 -->
+      <div class="business-card">
+        <h3>元益水電工程</h3>
+        <p><i class="fas fa-user"></i>負責人：陳建銓</p>
+        <p><i class="fas fa-phone-volume"></i>服務專線：<a href="tel:0928830555">0928-830-555</a></p>
+      </div>
+
+      <p style="margin-bottom: 30px;">您也可以填寫下方表單，我們的專業技師將盡快與您聯繫初步評估與報價。</p>
+      
       <div class="form-container">
         <form id="inquiryForm">
           <div class="form-group">
