@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>元益水電工程</title>
+  <title>元益家庭水電工程</title>
   <style>
     /* 全域設定 */
     :root {
@@ -18,12 +18,13 @@
     body { font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif; color: var(--text-dark); line-height: 1.6; }
     a { text-decoration: none; }
     
-    /* 導覽列 */
+    /* 導覽列與 Logo 設定 */
     header {
       position: sticky; top: 0; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; z-index: 1000;
+      display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; z-index: 1000;
     }
-    .logo { font-size: 24px; font-weight: bold; color: var(--primary-blue); }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 55px; width: auto; object-fit: contain; }
     .nav-links a { margin: 0 15px; color: var(--text-dark); font-weight: bold; }
     .nav-links a:hover { color: var(--primary-blue); }
     
@@ -64,7 +65,7 @@
 
     /* 手機版適配 */
     @media (max-width: 768px) {
-      .nav-links { display: none; /* 手機版可考慮改為漢堡選單或隱藏 */ }
+      .nav-links { display: none; }
       .hero h1 { font-size: 2rem; }
       .hero .btn { display: block; margin: 15px auto; width: 80%; max-width: 300px; }
     }
@@ -74,7 +75,9 @@
 
   <!-- 導覽列 -->
   <header>
-    <div class="logo">元益水電工程</div>
+    <a href="#" class="logo">
+      <img src="Yuan Yi.png" alt="元益家庭水電工程">
+    </a>
     <nav class="nav-links">
       <a href="#services">服務項目</a>
       <a href="#contact">聯絡我們</a>
@@ -130,7 +133,6 @@
             <label for="message">需求說明</label>
             <textarea id="message" name="message" required placeholder="請簡單描述您需要協助的水電項目 (例如：廚房冷熱水管漏水)"></textarea>
           </div>
-          <!-- 狀態按鈕 -->
           <button type="submit" id="submitBtn" class="btn btn-primary submit-btn">送出諮詢單</button>
         </form>
       </div>
@@ -138,13 +140,13 @@
   </section>
 
   <footer>
-    <p>&copy; 2026 元益水電工程. All Rights Reserved.</p>
+    <p>&copy; 2026 元益家庭水電工程. All Rights Reserved.</p>
   </footer>
 
   <!-- 串接 GAS 邏輯 -->
   <script>
     document.getElementById('inquiryForm').addEventListener('submit', function(e) {
-      e.preventDefault(); // 阻止表單預設重整行為
+      e.preventDefault(); 
       
       const btn = document.getElementById('submitBtn');
       const originalText = btn.innerText;
@@ -152,16 +154,13 @@
       btn.disabled = true;
       btn.style.opacity = '0.7';
 
-      // 取得表單資料並轉為 JSON 格式
       const formData = new FormData(this);
       const data = Object.fromEntries(formData.entries());
 
-      // ★★★ 請將下方的 URL 替換為你的 GAS 網頁應用程式網址 ★★★
       const scriptURL = 'https://script.google.com/macros/s/AKfycbz1KC234VzN-1lIIPKeB-uIiK1uwN__DCptciYp0V09WPEm_eDG5tmb28WfUVpvr2rmPg/exec';
 
       fetch(scriptURL, {
         method: 'POST',
-        // GAS 建議使用 text/plain 來避免 CORS Preflight 卡住
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(data)
       })
@@ -169,7 +168,7 @@
       .then(result => {
         if(result.result === 'success') {
           alert('表單已成功送出！我們將盡快與您聯絡。');
-          this.reset(); // 清空表單
+          this.reset();
         } else {
           alert('傳送失敗，請稍後再試或直接來電。');
         }
@@ -179,7 +178,6 @@
         alert('網路連線異常，請確認網路狀態後再試。');
       })
       .finally(() => {
-        // 恢復按鈕狀態
         btn.innerText = originalText;
         btn.disabled = false;
         btn.style.opacity = '1';
