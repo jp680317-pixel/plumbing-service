@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>元益水電工程</title>
+  <style>
+    /* 全域設定 */
+    :root {
+      --primary-blue: #0056b3;
+      --secondary-blue: #e6f0fa;
+      --action-orange: #ff8c00;
+      --action-orange-hover: #e07b00;
+      --text-dark: #333;
+      --text-gray: #666;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Microsoft JhengHei', '微軟正黑體', sans-serif; color: var(--text-dark); line-height: 1.6; }
+    a { text-decoration: none; }
+    
+    /* 導覽列 */
+    header {
+      position: sticky; top: 0; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; z-index: 1000;
+    }
+    .logo { font-size: 24px; font-weight: bold; color: var(--primary-blue); }
+    .nav-links a { margin: 0 15px; color: var(--text-dark); font-weight: bold; }
+    .nav-links a:hover { color: var(--primary-blue); }
+    
+    /* 按鈕樣式 */
+    .btn { padding: 12px 24px; border-radius: 5px; font-weight: bold; display: inline-block; cursor: pointer; border: none; font-size: 16px; transition: 0.3s; }
+    .btn-primary { background: var(--action-orange); color: #fff; }
+    .btn-primary:hover { background: var(--action-orange-hover); }
+    .btn-outline { border: 2px solid var(--primary-blue); color: var(--primary-blue); background: transparent; }
+    .btn-outline:hover { background: var(--secondary-blue); }
+
+    /* 首屏視覺區 */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+      color: #fff; text-align: center; padding: 120px 20px;
+    }
+    .hero h1 { font-size: 3rem; margin-bottom: 20px; }
+    .hero p { font-size: 1.2rem; margin-bottom: 30px; }
+    .hero .btn { margin: 0 10px; }
+
+    /* 服務項目 (Grid) */
+    .section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
+    .section h2 { font-size: 2.2rem; color: var(--primary-blue); margin-bottom: 40px; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    .service-card { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-blue); }
+    .service-card h3 { font-size: 1.4rem; margin-bottom: 15px; }
+
+    /* 聯絡我們 (表單面板) */
+    .contact-section { background: var(--secondary-blue); padding: 80px 5%; }
+    .form-container { max-width: 600px; margin: 0 auto; background: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+    .form-group { margin-bottom: 20px; text-align: left; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: bold; }
+    .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; font-family: inherit; }
+    .form-group textarea { height: 120px; resize: vertical; }
+    .submit-btn { width: 100%; }
+
+    /* 頁尾 */
+    footer { background: #222; color: #aaa; text-align: center; padding: 20px; font-size: 0.9rem; }
+
+    /* 手機版適配 */
+    @media (max-width: 768px) {
+      .nav-links { display: none; /* 手機版可考慮改為漢堡選單或隱藏 */ }
+      .hero h1 { font-size: 2rem; }
+      .hero .btn { display: block; margin: 15px auto; width: 80%; max-width: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <header>
+    <div class="logo">元益水電工程</div>
+    <nav class="nav-links">
+      <a href="#services">服務項目</a>
+      <a href="#contact">聯絡我們</a>
+    </nav>
+    <a href="#contact" class="btn btn-primary" style="padding: 8px 16px;">立即預約</a>
+  </header>
+
+  <!-- 首屏 -->
+  <section class="hero">
+    <h1>專業水電維修與工程規劃</h1>
+    <p>價格透明・完善保固，大台北地區快速到府服務</p>
+    <div>
+      <a href="#contact" class="btn btn-primary">線上填表諮詢</a>
+      <a href="tel:0900000000" class="btn btn-outline" style="color: #fff; border-color: #fff;">撥打服務專線</a>
+    </div>
+  </section>
+
+  <!-- 服務項目 -->
+  <section id="services" class="section">
+    <h2>我們的服務項目</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>居家維修</h3>
+        <p>抓漏防水、馬桶/水管包通、燈具與衛浴設備更換。</p>
+      </div>
+      <div class="service-card">
+        <h3>老屋翻新</h3>
+        <p>全室電線重拉、冷熱水管更新、無熔絲開關更換，確保用電安全。</p>
+      </div>
+      <div class="service-card">
+        <h3>廠辦工程</h3>
+        <p>辦公室配電、店面裝潢水電配置、網路與電話線路佈建。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 聯絡表單 -->
+  <section id="contact" class="contact-section text-center">
+    <div class="section">
+      <h2>聯絡我們</h2>
+      <p style="margin-bottom: 30px;">填寫下方表單，我們的專業技師將盡快與您聯繫初步評估與報價。</p>
+      <div class="form-container">
+        <form id="inquiryForm">
+          <div class="form-group">
+            <label for="name">姓名 / 公司名稱</label>
+            <input type="text" id="name" name="name" required placeholder="請輸入您的姓名">
+          </div>
+          <div class="form-group">
+            <label for="phone">聯絡電話</label>
+            <input type="tel" id="phone" name="phone" required placeholder="09xx-xxx-xxx">
+          </div>
+          <div class="form-group">
+            <label for="message">需求說明</label>
+            <textarea id="message" name="message" required placeholder="請簡單描述您需要協助的水電項目 (例如：廚房冷熱水管漏水)"></textarea>
+          </div>
+          <!-- 狀態按鈕 -->
+          <button type="submit" id="submitBtn" class="btn btn-primary submit-btn">送出諮詢單</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 元益水電工程. All Rights Reserved.</p>
+  </footer>
+
+  <!-- 串接 GAS 邏輯 -->
+  <script>
+    document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // 阻止表單預設重整行為
+      
+      const btn = document.getElementById('submitBtn');
+      const originalText = btn.innerText;
+      btn.innerText = '資料發送中...';
+      btn.disabled = true;
+      btn.style.opacity = '0.7';
+
+      // 取得表單資料並轉為 JSON 格式
+      const formData = new FormData(this);
+      const data = Object.fromEntries(formData.entries());
+
+      // ★★★ 請將下方的 URL 替換為你的 GAS 網頁應用程式網址 ★★★
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbz1KC234VzN-1lIIPKeB-uIiK1uwN__DCptciYp0V09WPEm_eDG5tmb28WfUVpvr2rmPg/exec';
+
+      fetch(scriptURL, {
+        method: 'POST',
+        // GAS 建議使用 text/plain 來避免 CORS Preflight 卡住
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data)
+      })
+      .then(response => response.json())
+      .then(result => {
+        if(result.result === 'success') {
+          alert('表單已成功送出！我們將盡快與您聯絡。');
+          this.reset(); // 清空表單
+        } else {
+          alert('傳送失敗，請稍後再試或直接來電。');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('網路連線異常，請確認網路狀態後再試。');
+      })
+      .finally(() => {
+        // 恢復按鈕狀態
+        btn.innerText = originalText;
+        btn.disabled = false;
+        btn.style.opacity = '1';
+      });
+    });
+  </script>
+</body>
+</html>
